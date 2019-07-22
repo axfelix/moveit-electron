@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Radiam Agent</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="container" class="container-fluid">
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+        <h3>Contact Name</h3>
+        <input name="contactname" id="contactname" type="text" size="60"/>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+        <h3>Department</h3>
+        <input name="department" id="department" type="text" size="60"/>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+        <h3>Email Address</h3>
+        <input name="email" id="email" type="text" size="60"/>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+        <h3>Telephone</h3>
+        <input name="phone" id="phone" type="text" size="60"/>
+      </div>
+    </div>
+
+    <br/><hr/>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+        <h3>Record Creator</h3>
+        <input name="creator" id="creator" type="text" size="60"/>
+        <img class="exp_icon0" src="icon_explanation.png" width="25" height="25" data-toggle="popover"
+             title="The name of the department or unit responsible for creating and maintaing the records." >
+        <script>
+        $(document).ready(function() {
+           $('[data-toggle="popover"]').popover({
+              placement: 'top',
+              trigger: 'hover'
+           });
+        });
+        </script>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+        <h3>RRSDA Number</h3>
+        <input name="rrsda" id="rrsda" type="text" size="60"/>
+        <img class="exp_icon0" src="icon_explanation.png" width="25" height="25" data-toggle="popover"
+             title="The Records Retention Schedule and Disposal Authority (RRSDA) number that applies to the records." >
+        <script>
+        $(document).ready(function() {
+           $('[data-toggle="popover"]').popover({
+              placement: 'top',
+              trigger: 'hover'
+           });
+        });
+        </script>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+        <h3>Transfer Title</h3>
+        <input name="title" id="title" type="text" size="60"/>
+        <img class="exp_icon0" src="icon_explanation.png" width="25" height="25" data-toggle="popover"
+             title="The name of the records series if known, or a brief descriptor." >
+        <script>
+        $(document).ready(function() {
+           $('[data-toggle="popover"]').popover({
+              placement: 'top',
+              trigger: 'hover'
+           });
+        });
+        </script>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+        <h3>Date range</h3>
+        From: <input name="datefrom" id="datefrom" type="date"/> To: <input name="dateto" id="dateto" type="date"/>
+      </div>
+    </div>  
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+        <h3>Records description</h3>
+        <textarea name="description" id="textarea" rows="4" wrap="soft" cols="60"></textarea>
+      </div>
+    </div> 
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+        <h3>Other available metadata?</h3>
+        <input name="metadata" id="metadata" type="text" size="60"/>
+        <img class="exp_icon0" src="icon_explanation.png" width="25" height="25" data-toggle="popover"
+             title="A summary of other information, if available, that provides additional context, e.g. file lists, indexes, screenshots, documentation. The Archives will consult with you further." >
+        <script>
+        $(document).ready(function() {
+           $('[data-toggle="popover"]').popover({
+              placement: 'top',
+              trigger: 'hover'
+           });
+        });
+        </script>
+      </div>
+    </div> 
+
+    <br/><br/>
+
+    <div class="button">
+      <button class="btn btn-primary" id="package">Create Transfer Package</button>
+    </div>
+
+    <br/><br/>
+
+  </div>
+  <script src="makePackage.js" charset="utf-8"></script>
+</body>
+
+</html>
