@@ -90,7 +90,7 @@ let port = portfinder.getPort(function (err, port) {
     }
 
     if (pythonChild != null) {
-      console.log('Python started successfully')
+      console.log('Python started successfully');
 
       pythonChild.stdout.on('data', function (data) {
         console.log(data.toString());

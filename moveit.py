@@ -11,7 +11,6 @@ from distutils.dir_util import copy_tree
 import tempfile
 import zerorpc
 
-
 def generate_file_md5(zipname, blocksize=2**20):
     m = hashlib.md5()
     with open(zipname, "rb") as f:
@@ -24,14 +23,13 @@ def generate_file_md5(zipname, blocksize=2**20):
 
 
 class MoveIt(object):
-    def package(self, contactname, department, email, phone, creator, rrsda, title, datefrom, dateto, description, metadata, package_folder):
-        print(contactname, department, email, phone, creator, rrsda, title, datefrom, dateto, description, metadata, package_folder)
+    def bag_package(self, contactname, department, email, phone, creator, rrsda, title, datefrom, dateto, description, metadata, package_folder):
         bag_dir_parent = tempfile.mkdtemp()
         if os.path.isdir(bag_dir_parent):
             shutil.rmtree(bag_dir_parent)
         bag_dir = os.path.join(bag_dir_parent, 'bag')
         os.makedirs(bag_dir)
-        copy_tree(package_folder, bag_dir)
+        copy_tree(os.path.normpath(package_folder.strip('"')), bag_dir)
 
         try:
             bag = bagit.make_bag(bag_dir, None, 1, ['md5'])
@@ -55,9 +53,7 @@ class MoveIt(object):
         shutil.rmtree(bag_dir)
 
         desktopPath = os.path.expanduser("~/Desktop/")
-        outputPath = desktopPath + os.path.splitext(os.path.basename(zipname))[0]
-        os.mkdir(outputPath)
-        shutil.move(zipname, os.path.join(outputPath, os.path.basename(zipname)))
+        shutil.move(zipname, os.path.join(desktopPath, os.path.basename(zipname)))
         return True
 
 if __name__ == '__main__':
