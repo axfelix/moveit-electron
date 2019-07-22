@@ -25,6 +25,7 @@ def generate_file_md5(zipname, blocksize=2**20):
 
 class MoveIt(object):
     def package(self, contactname, department, email, phone, creator, rrsda, title, datefrom, dateto, description, metadata, package_folder):
+        print(contactname, department, email, phone, creator, rrsda, title, datefrom, dateto, description, metadata, package_folder)
         bag_dir_parent = tempfile.mkdtemp()
         if os.path.isdir(bag_dir_parent):
             shutil.rmtree(bag_dir_parent)
@@ -49,7 +50,7 @@ class MoveIt(object):
         except (bagit.BagError, Exception) as e:
             return False
 
-        bag_destination = os.path.join(str(bag_dir_parent), ("bagged"))
+        bag_destination = os.path.join(str(bag_dir_parent), (title))
         zipname = shutil.make_archive(bag_destination, 'zip', bag_dir)
         shutil.rmtree(bag_dir)
 
@@ -57,7 +58,6 @@ class MoveIt(object):
         outputPath = desktopPath + os.path.splitext(os.path.basename(zipname))[0]
         os.mkdir(outputPath)
         shutil.move(zipname, os.path.join(outputPath, os.path.basename(zipname)))
-        os.remove(zipname)
         return True
 
 if __name__ == '__main__':

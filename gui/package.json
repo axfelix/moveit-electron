@@ -14,12 +14,12 @@
     "test": "electron . --run-tests"
   },
   "dependencies": {
-    "electron": "2.0.17",
+    "electron": "2.0.18",
     "electron-squirrel-startup": "^1.0.0",
     "node-notifier": "^5.4.0",
     "portfinder": "^1.0.20",
     "update-electron-app": "^1.3.0",
-    "zeromq": "^5.1.0",
+    "zeromq": "4.6.0",
     "zerorpc": "^0.9.8"
   },
   "files": [
