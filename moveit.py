@@ -11,19 +11,8 @@ from distutils.dir_util import copy_tree
 import tempfile
 import zerorpc
 
-def generate_file_md5(zipname, blocksize=2**20):
-    m = hashlib.md5()
-    with open(zipname, "rb") as f:
-        while True:
-            buf = f.read(blocksize)
-            if not buf:
-                break
-            m.update(buf)
-    return m.hexdigest()
-
-
 class MoveIt(object):
-    def bag_package(self, contactname, department, email, phone, creator, rrsda, title, datefrom, dateto, description, metadata, package_folder):
+    def bag_package(self, contactname, department, email, phone, creator, rrsda, agreement, title, datefrom, dateto, description, metadata, package_folder):
         bag_dir_parent = tempfile.mkdtemp()
         if os.path.isdir(bag_dir_parent):
             shutil.rmtree(bag_dir_parent)
@@ -40,9 +29,10 @@ class MoveIt(object):
             bag.info['Phone'] = phone
             bag.info['Record Creator'] = creator
             bag.info['RRSDA Number'] = rrsda
+            bag.info['Deposit Agreement'] = agreement
             bag.info['Transfer Title'] = title
             bag.info['Date Range'] = (datefrom + "-" + dateto)
-            bag.info['Descrption'] = description
+            bag.info['Description'] = description
             bag.info['Other Metadata'] = metadata
             bag.save()
         except (bagit.BagError, Exception) as e:
