@@ -21,19 +21,21 @@ class MoveIt(object):
         copy_tree(os.path.normpath(package_folder.strip('"')), bag_dir)
 
         try:
-            bag = bagit.make_bag(bag_dir, None, 1, ['md5'])
-            bag.info['Transfer Time'] = strftime("%Y-%m-%d %H:%M:%S")
-            bag.info['Contact Name'] = contactname
-            bag.info['Department'] = department
-            bag.info['Email'] = email
-            bag.info['Phone'] = phone
-            bag.info['Record Creator'] = creator
-            bag.info['RRSDA Number'] = rrsda
-            bag.info['Deposit Agreement'] = agreement
-            bag.info['Transfer Title'] = title
-            bag.info['Date Range'] = (datefrom + "-" + dateto)
-            bag.info['Description'] = description
-            bag.info['Other Metadata'] = metadata
+            bag = bagit.make_bag(bag_dir, None, 1, ['sha256'])
+            bag.info['Transfer-Time'] = strftime("%Y-%m-%d %H:%M:%S")
+            bag.info['Bag-Software-Agent'] = "SFU MoveIt"
+            bag.info['Contact-Name'] = contactname
+            bag.info['Contact-Organization'] = department
+            bag.info['Contact-Email'] = email
+            bag.info['Contact-Phone'] = phone
+            bag.info['Source-Organization'] = creator
+            bag.info['RRSDA-Number'] = rrsda
+            bag.info['Donation-Agreement'] = agreement
+            bag.info['External-Identifier'] = title
+            bag.info['Year-Start'] = datefrom
+            bag.info['Year-End'] = dateto
+            bag.info['External-Description'] = description
+            bag.info['Other-Available-Metadata'] = metadata
             bag.save()
         except (bagit.BagError, Exception) as e:
             return False
