@@ -10,6 +10,7 @@ from time import strftime
 from distutils.dir_util import copy_tree
 import tempfile
 import zerorpc
+import dateparser
 
 class MoveIt(object):
     def bag_package(self, contactname, department, email, phone, creator, rrsda, agreement, title, datefrom, dateto, description, metadata, package_folder):
@@ -32,8 +33,8 @@ class MoveIt(object):
             bag.info['RRSDA-Number'] = rrsda
             bag.info['Donation-Agreement'] = agreement
             bag.info['External-Identifier'] = title
-            bag.info['Year-Start'] = datefrom
-            bag.info['Year-End'] = dateto
+            bag.info['Year-Start'] = dateparser.parse(datefrom).year
+            bag.info['Year-End'] = dateparser.parse(dateto).year
             bag.info['External-Description'] = description
             bag.info['Other-Available-Metadata'] = metadata
             bag.save()
