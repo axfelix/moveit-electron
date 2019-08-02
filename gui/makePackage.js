@@ -1,8 +1,10 @@
 const notifier = require("node-notifier");
+const tt = require('electron-tooltip');
 const {dialog} = require('electron').remote;
 const remote = require('electron').remote;
 let client = remote.getGlobal('client');
 let packageFolder = null;
+tt({position: 'right'})
 
 function package() {
   var contactname = document.getElementById("contactname").value;
