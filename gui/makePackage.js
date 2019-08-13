@@ -1,12 +1,21 @@
 const notifier = require("node-notifier");
 const tt = require('electron-tooltip');
 const path = require('path');
+const fs = require('fs');
 const {dialog} = require('electron').remote;
-const app = require('electron').remote;
+const {app} = require('electron').remote;
 const remote = require('electron').remote;
 let client = remote.getGlobal('client');
 let packageFolder = null;
 tt({position: 'right'})
+
+var configpath = path.join(app.getPath("userData"), "moveituser.json");
+if (fs.existsSync(configpath)) {
+  let config_json = JSON.parse(fs.readFileSync(configpath));
+  for (setting in config_json){
+    document.getElementById(setting).value = config_json[setting];
+  }
+}
 
 function package() {
   var contactname = document.getElementById("contactname").value;
@@ -30,9 +39,8 @@ function package() {
       client.invoke("bag_package", contactname, jobtitle, department, email, phone, creator, rrsda, title, datefrom, dateto, description, metadata, JSON.stringify(packageFolder[0]), function(error, res, more) {
         if (res === true){
           notifier.notify({"title" : "MoveIt", "message" : "Transfer package has been created on desktop."});
-          configpath = path.join(app.getPath("userData"), "moveituser.json");
-          configblock = {"contactname": contactname, "jobtitle": jobtitle, "department": department, "email": email, "phone": phone};
-          require("fs").writeFile(configpath, configblock, (err) => {
+          var configblock = {"contactname": contactname, "jobtitle": jobtitle, "department": department, "email": email, "phone": phone};
+          fs.writeFile(configpath, JSON.stringify(configblock), (err) => {
             if (err) throw err;
           });
         } else {
