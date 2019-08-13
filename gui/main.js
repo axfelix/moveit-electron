@@ -17,15 +17,6 @@ const PY_MODULE = 'moveit'
 let pythonChild = null
 let mainWindow = null
 
-var shouldQuit = app.makeSingleInstance(function(commandLine, workingDirectory) {
-  notifier.notify({"title" : "MoveIt", "message" : "MoveIt is already running."});
-});
-
-if (shouldQuit) {
-  app.quit();
-  return;
-}
-
 const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 
 const guessPackaged = () => {
