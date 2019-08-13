@@ -1,2 +1,3 @@
 .DS_Store
 gui/node_modules
+gui/package-lock.json
