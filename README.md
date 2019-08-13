@@ -1,10 +1,12 @@
 # MoveIt
 
 ## Development
-`$ pip install -r requirements.txt --user`
-`$ cd gui`
-`$ npm install`
-`$ npm start`
+```
+$ pip install -r requirements.txt --user
+$ cd gui
+$ npm install
+$ npm start
+```
 
 ## Building
 The Python code needs to be built on its target platform using `pyinstaller`:
