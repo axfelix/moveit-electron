@@ -1,4 +1,2 @@
 bagit
-scp
 zerorpc
-dateparser

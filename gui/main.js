@@ -37,11 +37,6 @@ const getScriptPath = () => {
   if (!guessPackaged()) {
     return path.join(__dirname, PY_FOLDER, PY_MODULE + '.py')
   }
-  radiamAutoLauncher.isEnabled().then(function(isEnabled){
-    if(!isEnabled){
-      radiamAutoLauncher.enable();
-    }
-  })
   if (process.platform === 'win32') {
     return path.join(__dirname, PY_MOVEIT_FOLDER, PY_MODULE + '.exe')
   }
