@@ -21,6 +21,6 @@ After building the crawler, the GUI can be built from the `gui` subdirectory wit
 
 Finally, to package for install:
 
-`electron-installer-windows --src moveit-win32-x64/ --dest install/ --config config.json --certificateFile radiam.pfx --certificatePassword [password]` (Windows)
+`electron-installer-windows --src moveit-win32-x64/ --dest install/ --config config.json` (Windows)
 
 `hdiutil create tmp.dmg -ov -volname "MoveIt" -fs HFS+ -srcfolder moveit-darwin-x64/ && hdiutil convert tmp.dmg -format UDZO -o MoveIt.dmg && rm tmp.dmg` (Mac)
