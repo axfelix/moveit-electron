@@ -22,7 +22,7 @@ class MoveIt(object):
 
         try:
             bag = bagit.make_bag(bag_dir, None, 1, ['sha256'])
-            bag.info['Transfer-Time'] = strftime("%Y-%m-%d %H:%M:%S")
+            bag.info['Package-Time'] = strftime("%Y-%m-%d %H:%M:%S")
             bag.info['Bag-Software-Agent'] = "SFU MoveIt"
             bag.info['Contact-Name'] = contactname
             bag.info['Contact-Title'] = jobtitle
@@ -36,6 +36,11 @@ class MoveIt(object):
             bag.info['Year-End'] = dateto
             bag.info['External-Description'] = description
             bag.info['Other-Available-Metadata'] = metadata
+            bag.info['Internal-Sender-Identifier'] = ''
+            bag.info['Internal-Sender-Description'] = ''
+            bag.info['Internal-Validation-Date'] = ''
+            bag.info['Internal-Validation-By'] = ''
+            bag.info['Internal-Validation-Note'] = ''
             bag.save()
         except (bagit.BagError, Exception) as e:
             return False
