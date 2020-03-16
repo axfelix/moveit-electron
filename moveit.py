@@ -46,9 +46,6 @@ class MoveIt(object):
             return False
 
         bag_destination = os.path.join(str(bag_dir_parent), (title))
-        bagit_txt = os.path.join(bag_dir, "bagit.txt")
-        with open(bagit_txt, "w") as txt:
-            txt.write("BagIt-Version: 1.0\nTag-File-Character-Encoding: UTF-8\n")
         zipname = shutil.make_archive(bag_destination, 'zip', bag_dir)
         shutil.rmtree(bag_dir)
 
