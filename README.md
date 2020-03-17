@@ -1,5 +1,7 @@
 # MoveIt
 
+![MoveIt](moveit.png)
+
 ## Development
 ```
 $ pip install -r requirements.txt --user
