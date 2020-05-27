@@ -20,6 +20,11 @@ class MoveIt(object):
         os.makedirs(bag_dir)
         copy_tree(os.path.normpath(package_folder.strip('"')), bag_dir)
 
+        for root, sub, files in os.walk(bag_dir):
+            for file in files:
+                if file == ".DS_Store":
+                    os.remove(os.path.abspath(os.path.join(root, file)))
+
         try:
             bag = bagit.make_bag(bag_dir, None, 1, ['sha256'])
             bag.info['Package-Time'] = strftime("%Y-%m-%d %H:%M:%S")
