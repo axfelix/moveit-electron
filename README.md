@@ -2,6 +2,10 @@
 
 ![MoveIt](moveit.png)
 
+This is MoveIt, a tool for building bag packages from files and folders on your desktop for transfer to repositories! The metadata fields entered into this app will be written into the bag's `bag-info.txt`. Right now, the compiled versions listed under the releases tab are customized for Simon Fraser University (as is one documentation link built into the app), but it's very easy to customize for your local context if you want.
+
+User properties (those before the "jump" halfway down the app window) are automatically saved between runs and repopulated; bag-specific properties are not. Uses the Library of Congress' Python bagit library.
+
 ## Development
 ```
 $ pip install -r requirements.txt --user
