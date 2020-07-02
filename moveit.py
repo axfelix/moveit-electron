@@ -10,6 +10,7 @@ from time import strftime
 from distutils.dir_util import copy_tree
 import tempfile
 import zerorpc
+import json
 
 class MoveIt(object):
     def bag_package(self, contactname, jobtitle, department, email, phone, creator, rrsda, title, datefrom, dateto, description, metadata, package_folder):
@@ -21,9 +22,16 @@ class MoveIt(object):
         copy_tree(os.path.normpath(package_folder.strip('"')), bag_dir)
 
         try:
+            with open("package.json", "r") as package_json:
+                version = json.load(package_json)['version']
+        except:
+            with open("gui/package.json", "r") as package_json:
+                version = json.load(package_json)['version']
+
+        try:
             bag = bagit.make_bag(bag_dir, None, 1, ['sha256'])
             bag.info['Package-Time'] = strftime("%Y-%m-%d %H:%M:%S")
-            bag.info['Bag-Software-Agent'] = "SFU MoveIt"
+            bag.info['Bag-Software-Agent'] = "MoveIt " + version
             bag.info['Contact-Name'] = contactname
             bag.info['Contact-Title'] = jobtitle
             bag.info['Contact-Organization'] = department
