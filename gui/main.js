@@ -39,6 +39,9 @@ const createWindow = () => {
     width: 550,
     height: 700,
     backgroundColor: "#D6D8DC",
+    webPreferences: {
+      nodeIntegration: true
+    }
   });
 
   if (app.dock) { app.dock.show() };
@@ -94,6 +97,7 @@ let port = portfinder.getPort(function (err, port) {
 const exitMoveIt = () => {
   pythonChild.kill()
   pythonChild = null
+  global.client.close();
 }
 
 app.on("before-quit", ev => {

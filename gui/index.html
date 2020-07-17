@@ -4,8 +4,11 @@
 <head>
   <meta charset="utf-8">
   <title>MoveIt</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script>window.jQuery = window.$ = require('jquery');</script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script type="text/javascript">
     let shell = require('electron').remote.shell
     document.addEventListener('click', function (event) {
@@ -19,39 +22,40 @@
 
 <body>
   <div id="container" class="container-fluid">
-
+    <h2>MoveIt</h2>
+    <br/>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-        <h3>Contact Name</h3>
-        <input name="contactname" id="contactname" type="text" size="60"/>
+        <h4>Contact Name</h4>
+        <input name="contactname" id="contactname" type="text" size="56"/>
       </div>
     </div>
-
+    <br/>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-        <h3>Position / Title</h3>
-        <input name="jobtitle" id="jobtitle" type="text" size="60"/>
+        <h4>Position / Title</h4>
+        <input name="jobtitle" id="jobtitle" type="text" size="56"/>
       </div>
     </div>
-
+    <br/>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-        <h3>Department / Organization</h3>
-        <input name="department" id="department" type="text" size="60"/>
+        <h4>Department / Organization</h4>
+        <input name="department" id="department" type="text" size="56"/>
       </div>
     </div>
-
+    <br/>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-        <h3>Email Address</h3>
-        <input name="email" id="email" type="text" size="60"/>
+        <h4>Email Address</h4>
+        <input name="email" id="email" type="text" size="56"/>
       </div>
     </div>
-
+    <br/>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-        <h3>Telephone</h3>
-        <input name="phone" id="phone" type="text" size="60"/>
+        <h4>Telephone</h4>
+        <input name="phone" id="phone" type="text" size="56"/>
       </div>
     </div>
 
@@ -59,49 +63,49 @@
 
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-        <h3>Record Creator</h3>
-        <input name="creator" id="creator" type="text" size="60"/>
-        <img class="exp_icon0" src="icon_explanation.png" width="25" height="25" data-tooltip="The name of the department or unit responsible for creating and maintaing the records." >
+        <h4>Record Creator</h4>
+        <input name="creator" id="creator" type="text" size="56"/>
+        <img class="exp_icon0" src="icon_explanation.png" data-toggle="tooltip" data-placement="right" width="25" height="25" title="The name of the department or unit responsible for creating and maintaing the records." >
       </div>
     </div>
-
+    <br/>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-        <h3>RRSDA Number</h3>
+        <h4>RRSDA Number</h4>
         Internal SFU Users Only. See <a href="http://www.sfu.ca/archives2/dur/rrsdas.html">Overview</a>.
-        <input name="rrsda" id="rrsda" type="text" size="60"/>
-        <img class="exp_icon0" src="icon_explanation.png" width="25" height="25" data-tooltip="The Records Retention Schedule and Disposal Authority (RRSDA) number that applies to the records." >
+        <input name="rrsda" id="rrsda" type="text" size="56"/>
+        <img class="exp_icon0" src="icon_explanation.png" data-toggle="tooltip" data-placement="right" width="25" height="25" title="The Records Retention Schedule and Disposal Authority (RRSDA) number that applies to the records." >
       </div>
     </div>
-
+    <br/>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-        <h3>Transfer Title</h3>
-        <input name="title" id="title" type="text" size="60"/>
-        <img class="exp_icon0" src="icon_explanation.png" width="25" height="25" data-tooltip="The name of the records series if known, or a brief descriptor." >
+        <h4>Transfer Title</h4>
+        <input name="title" id="title" type="text" size="56"/>
+        <img class="exp_icon0" src="icon_explanation.png" data-toggle="tooltip" data-placement="right" width="25" height="25" title="The name of the records series if known, or a brief descriptor." >
       </div>
     </div>
-
+    <br/>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-        <h3>Date Range</h3>
+        <h4>Date Range</h4>
         From: <select name="datefrom" id="datefrom"></select> To <select name="dateto" id="dateto"></select>
       </div>
     </div>  
-
+    <br/>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-        <h3>Records Description</h3>
-        <textarea name="description" id="description" rows="4" wrap="soft" cols="60"></textarea>
+        <h4>Records Description</h4>
+        <textarea name="description" id="description" rows="4" wrap="soft" cols="56"></textarea>
       </div>
     </div> 
-
+    <br/>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-        <h3>Other Metadata Available?</h3>
+        <h4>Other Metadata Available?</h4>
         e.g. file lists, indices, documentation.<br/>
         If so, please provide a brief description.
-        <textarea name="metadata" id="metadata" rows="4" wrap="soft" cols="60"></textarea>
+        <textarea name="metadata" id="metadata" rows="4" wrap="soft" cols="56"></textarea>
       </div>
     </div> 
 

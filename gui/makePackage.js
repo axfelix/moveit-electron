@@ -1,5 +1,4 @@
 const notifier = require("node-notifier");
-const tt = require('electron-tooltip');
 const path = require('path');
 const fs = require('fs');
 const {dialog} = require('electron').remote;
@@ -7,7 +6,6 @@ const {app} = require('electron').remote;
 const remote = require('electron').remote;
 let client = remote.getGlobal('client');
 let packageFolder = null;
-tt({position: 'right'})
 
 var configpath = path.join(app.getPath("userData"), "moveituser.json");
 if (fs.existsSync(configpath)) {
@@ -33,7 +31,7 @@ function package() {
   if (contactname === "" || email === "" || title === ""){
     notifier.notify({"title" : "MoveIt", "message" : "Contact name, email, and transfer title are required fields."});
   } else {
-    packageFolder = dialog.showOpenDialog({properties: ["openDirectory"]});
+    packageFolder = dialog.showOpenDialogSync({properties: ["openDirectory"]});
     if (packageFolder){
       notifier.notify({"title" : "MoveIt", "message" : "Creating transfer package..."});
       client.invoke("bag_package", contactname, jobtitle, department, email, phone, creator, rrsda, title, datefrom, dateto, description, metadata, JSON.stringify(packageFolder[0]), function(error, res, more) {
