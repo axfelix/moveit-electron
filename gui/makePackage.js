@@ -34,7 +34,27 @@ function package() {
     packageFolder = dialog.showOpenDialogSync({properties: ["openDirectory"]});
     if (packageFolder){
       notifier.notify({"title" : "MoveIt", "message" : "Creating transfer package..."});
+      var window = remote.getCurrentWindow();
+        var childWindow = new remote.BrowserWindow({ 
+          parent: window, 
+          modal: true, 
+          show: false, 
+          width: 300, 
+          height: 100, 
+          webPreferences: {
+            nodeIntegration: true
+          }
+        });
+        childWindow.loadURL(require('url').format({
+          pathname: path.join(__dirname, 'inProgress.html'),
+          protocol: 'file:',
+          slashes: true
+        }));
+        childWindow.once('ready-to-show', () => {
+          childWindow.show()
+        });
       client.invoke("bag_package", contactname, jobtitle, department, email, phone, creator, rrsda, title, datefrom, dateto, description, metadata, JSON.stringify(packageFolder[0]), function(error, res, more) {
+        childWindow.close();
         if (res === true){
           notifier.notify({"title" : "MoveIt", "message" : "Transfer package has been created on desktop."});
           var configblock = {"contactname": contactname, "jobtitle": jobtitle, "department": department, "email": email, "phone": phone};

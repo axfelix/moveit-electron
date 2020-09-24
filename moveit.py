@@ -18,8 +18,8 @@ class MoveIt(object):
         if os.path.isdir(bag_dir_parent):
             shutil.rmtree(bag_dir_parent)
         bag_dir = os.path.join(bag_dir_parent, 'bag')
-        os.makedirs(bag_dir)
-        copy_tree(os.path.normpath(package_folder.strip('"')), bag_dir)
+        os.makedirs(os.path.join(bag_dir, os.path.basename(package_folder.strip('"'))))
+        copy_tree(os.path.normpath(package_folder.strip('"')), os.path.join(bag_dir, os.path.basename(package_folder.strip('"'))))
 
         for root, sub, files in os.walk(bag_dir):
             for file in files:

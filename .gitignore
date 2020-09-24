@@ -1,6 +1,8 @@
 build
 moveit.spec
+__pycache__/
 .DS_Store
 gui/node_modules
 gui/package-lock.json
 gui/install
+gui/sfu-moveit-win32-x64/
