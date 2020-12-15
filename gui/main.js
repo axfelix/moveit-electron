@@ -5,7 +5,7 @@ require('update-electron-app')();
 const {app, dialog, nativeImage, shell, Tray, Menu, BrowserWindow} = require("electron");
 const notifier = require("node-notifier");
 const zerorpc = require("zerorpc");
-global.client = new zerorpc.Client();
+global.client = new zerorpc.Client({"timeout": 3600, "heartbeatInterval": 3600000});
 const portfinder = require("portfinder");
 const fs = require('fs');
 
@@ -40,7 +40,8 @@ const createWindow = () => {
     height: 700,
     backgroundColor: "#D6D8DC",
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      enableRemoteModule: true
     }
   });
 

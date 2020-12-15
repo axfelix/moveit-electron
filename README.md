@@ -19,14 +19,22 @@ The Python code needs to be built on its target platform using `pyinstaller`:
 
 `pyinstaller -w moveit.py --distpath gui`
 
+(On Mac, this also builds a .app version of the Python code, which you'll actually want to delete -- just keep the folder of CLI tools.)
+
 After building the crawler, the GUI can be built from the `gui` subdirectory with:
 
 `electron-packager . --icon=resources/icon.ico` (Windows)
 
 `electron-packager . --icon=resources/icon.icns` (Mac)
 
+On Mac, you can sign for distribution with `electron-osx-sign` and `electron-notarize-cli`, and you need to include the embedded Python binaries:
+
+`IFS=$'\n' && electron-osx-sign sfu-moveit-darwin-x64/sfu-moveit.app/ $(find sfu-moveit-darwin-x64/sfu-moveit.app/Contents/Resources/app/ -type f -perm -u+x) --identity [hash] --entitlements=entitlements.plist --entitlements-inherit=entitlements.plist --hardenedRuntime`
+
+`electron-notarize --bundle-id ca.sfu.moveit --username my.apple.id@example.com --password @keystore:AC_PASSWORD sfu-moveit-darwin-x64/sfu-moveit.app/`
+
 Finally, to package for install:
 
 `electron-installer-windows --src moveit-win32-x64/ --dest install/ --config config.json` (Windows)
 
-`hdiutil create tmp.dmg -ov -volname "MoveIt" -fs HFS+ -srcfolder moveit-darwin-x64/ && hdiutil convert tmp.dmg -format UDZO -o MoveIt.dmg && rm tmp.dmg` (Mac)
+`hdiutil create tmp.dmg -ov -volname "MoveIt" -fs HFS+ -srcfolder moveit-darwin-x64/ && hdiutil convert tmp.dmg -format UDZO -o sfu-moveit.dmg && rm tmp.dmg` (Mac)

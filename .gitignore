@@ -2,6 +2,9 @@ build
 moveit.spec
 __pycache__/
 .DS_Store
+*.dmg
+gui/moveit/
+gui/sfu-moveit-darwin-x64/
 gui/node_modules
 gui/package-lock.json
 gui/install

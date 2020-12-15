@@ -42,7 +42,8 @@ function package() {
           width: 300, 
           height: 100, 
           webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            enableRemoteModule: true
           }
         });
         childWindow.loadURL(require('url').format({
@@ -63,6 +64,7 @@ function package() {
           });
         } else {
           notifier.notify({"title" : "MoveIt", "message" : "Error creating transfer package."});
+          console.log(error);
         }
       });
     }

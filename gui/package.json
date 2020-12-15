@@ -1,6 +1,6 @@
 {
   "name": "sfu-moveit",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "homepage": "https://github.com/axfelix/moveit",
   "main": "main.js",
   "description": "An app for producing packages for deposit to the Archives",

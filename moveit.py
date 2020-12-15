@@ -26,12 +26,7 @@ class MoveIt(object):
                 if file == ".DS_Store":
                     os.remove(os.path.abspath(os.path.join(root, file)))
 
-        try:
-            with open("package.json", "r") as package_json:
-                version = json.load(package_json)['version']
-        except:
-            with open("gui/package.json", "r") as package_json:
-                version = json.load(package_json)['version']
+        version = "2.0.6"
 
         try:
             bag = bagit.make_bag(bag_dir, None, 1, ['sha256'])
