@@ -27,7 +27,6 @@ function package() {
   var datefrom = document.getElementById("datefrom").value;
   var dateto = document.getElementById("dateto").value;
   var description = document.getElementById("description").value;
-  var metadata = document.getElementById("metadata").value;
   if (contactname === "" || email === "" || title === ""){
     notifier.notify({"title" : "MoveIt", "message" : "Contact name, email, and transfer title are required fields."});
   } else {
@@ -54,7 +53,7 @@ function package() {
         childWindow.once('ready-to-show', () => {
           childWindow.show()
         });
-      client.invoke("bag_package", contactname, jobtitle, department, email, phone, creator, rrsda, title, datefrom, dateto, description, metadata, JSON.stringify(packageFolder[0]), function(error, res, more) {
+      client.invoke("bag_package", contactname, jobtitle, department, email, phone, creator, rrsda, title, datefrom, dateto, description, JSON.stringify(packageFolder[0]), function(error, res, more) {
         childWindow.close();
         if (res === true){
           notifier.notify({"title" : "MoveIt", "message" : "Transfer package has been created on desktop."});
@@ -63,7 +62,7 @@ function package() {
             if (err) throw err;
           });
         } else {
-          notifier.notify({"title" : "MoveIt", "message" : "Error creating transfer package."});
+          notifier.notify({"title" : "MoveIt", "message" : "Error creating transfer package. Log added to desktop."});
           console.log(error);
         }
       });

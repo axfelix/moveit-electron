@@ -11,9 +11,10 @@ from distutils.dir_util import copy_tree
 import tempfile
 import zerorpc
 import json
+from datetime import datetime
 
 class MoveIt(object):
-    def bag_package(self, contactname, jobtitle, department, email, phone, creator, rrsda, title, datefrom, dateto, description, metadata, package_folder):
+    def bag_package(self, contactname, jobtitle, department, email, phone, creator, rrsda, title, datefrom, dateto, description, package_folder):
         bag_dir_parent = tempfile.mkdtemp()
         if os.path.isdir(bag_dir_parent):
             shutil.rmtree(bag_dir_parent)
@@ -43,7 +44,6 @@ class MoveIt(object):
             bag.info['Year-Start'] = datefrom
             bag.info['Year-End'] = dateto
             bag.info['External-Description'] = description
-            bag.info['Other-Available-Metadata'] = metadata
             bag.info['Internal-Sender-Identifier'] = ''
             bag.info['Internal-Sender-Description'] = ''
             bag.info['Internal-Validation-Date'] = ''
@@ -51,6 +51,10 @@ class MoveIt(object):
             bag.info['Internal-Validation-Note'] = ''
             bag.save()
         except (bagit.BagError, Exception) as e:
+            desktop_log = os.path.join(os.environ["HOMEPATH"], "Desktop", "moveit_log.txt")
+            dt = datetime.now()
+            with open(desktop_log, "a") as logfile:
+                logfile.write((str(dt) + " " + str(e)))
             return False
 
         bag_destination = os.path.join(str(bag_dir_parent), (title))

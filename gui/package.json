@@ -1,13 +1,13 @@
 {
-  "name": "sfu-moveit",
-  "version": "2.0.6",
-  "homepage": "https://github.com/axfelix/moveit",
+  "name": "@axfelix/moveit",
+  "version": "2.0.7",
+  "homepage": "https://github.com/axfelix/moveit-electron",
   "main": "main.js",
-  "description": "An app for producing packages for deposit to the Archives",
+  "description": "An app for producing bag packages for deposit.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/axfelix/moveit"
+    "url": "https://github.com/axfelix/moveit-electron"
   },
   "scripts": {
     "start": "electron .",
@@ -17,7 +17,7 @@
     "electron": "~10.1.3",
     "electron-squirrel-startup": "^1.0.0",
     "jquery": "~3.5.1",
-    "node-notifier": "^5.4.0",
+    "node-notifier": "^10.0.1",
     "portfinder": "^1.0.20",
     "update-electron-app": "^1.3.0",
     "zerorpc": "hokiedsp/zerorpc-node#dev_zmq6"
